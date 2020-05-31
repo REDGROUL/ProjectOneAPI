@@ -84,4 +84,26 @@ class Users
             }
         }
     }
+
+    /**
+     * удаление пользователя. Параметры: id пользователя; временное решение
+     */
+    function DeleteUser($id)
+    {
+        $db = new DBConnect();
+        $query = mysqli_query($db->Connect(),"SELECT * FROM `users` WHERE `Id`='$id'");
+        if(mysqli_num_rows($query)>0)
+        {
+            mysqli_query($db->Connect(),"DELETE FROM `users` WHERE `Id` = '$id'");
+            echo json_encode( [
+                "status" => true,
+                "message" => 'user deleted'
+            ]);
+        }else{
+            echo json_encode([
+                "status" => false,
+                "message" => 'user nt found'
+            ]);
+        }
+    }
 }

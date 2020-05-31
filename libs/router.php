@@ -38,6 +38,31 @@ class Router
                     break;
 
                     case 'DELETE':
+                        $id = $url_data[3];
+                        $usr->DeleteUser($id);
+                    break;
+
+                    case 'PATCH':
+                        echo 'PATH->UPDATE';
+                    break;
+                }
+            break;
+
+            case 'post':
+                switch($method)
+                {
+                    /**
+                     * описание методов get, post, delete и patch для параметра post
+                     */
+                    case 'GET':
+                        echo 'GET';
+                    break;
+
+                    case 'POST':
+                        echo 'POST';
+                    break;
+
+                    case 'DELETE':
                         echo 'DELETE';
                     break;
 
