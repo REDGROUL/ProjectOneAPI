@@ -48,14 +48,18 @@ class Router
                 }
             break;
 
-            case 'post':
+            case 'posts':
                 switch($method)
                 {
                     /**
                      * описание методов get, post, delete и patch для параметра post
                      */
                     case 'GET':
-                        echo 'GET';
+                        $Posts = new Posts;
+                        $param = $_GET['q'];
+                        $data = explode('/',$param);
+                        if($data[0] == 'posts');
+                        $Posts->GetPost($data[1]);
                     break;
 
                     case 'POST':
