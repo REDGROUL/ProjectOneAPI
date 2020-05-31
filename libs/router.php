@@ -8,23 +8,44 @@ class Router
     {
         $method = $_SERVER['REQUEST_METHOD'];
         $usr = new Users();
-        switch ($method)
+
+        $url = $_SERVER['REQUEST_URI'];
+        $url_data = explode('/',$url);
+        $DataOfQuery = $url_data[2];
+        /**
+         * Получаем данные из url
+         */
+        switch($DataOfQuery)
         {
-            case 'POST':
-                
-                $login = $_POST['login'];
-                $pass = $_POST['pass'];
-                $usr->RegUser($login,$pass);
-                
-            break;
-            case 'GET':
-                $param = $_GET['q'];
-                $data = explode('/',$param);
-                if($data[0] == 'user'){
+            case 'user':
+                switch($method)
+                {
+                    /**
+                     * описание методов get, post, delete и patch для параметра user
+                     */
+                    case 'GET':
+                        $param = $_GET['q'];
+                        $data = explode('/',$param);
+                        if($data[0] == 'user');
+                        $usr->GetUser($data[1]);
                     
-                    $usr->GetUser($data[1]);
+                    break;
+
+                    case 'POST':
+                        $login = $_POST['login'];
+                        $pass = $_POST['pass'];
+                        $usr->RegUser($login,$pass);
+                    break;
+
+                    case 'DELETE':
+                        echo 'DELETE';
+                    break;
+
+                    case 'PATCH':
+                        echo 'PATH->UPDATE';
+                    break;
                 }
             break;
-        }
+        } 
     }
 }
