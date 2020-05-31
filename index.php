@@ -1,7 +1,7 @@
 <?php
 /**
  * Поиск и подключение всех классов
- * ОГРОМНОЕ СПАСИБО Сергею Руфову за это
+ * 
  */
 header('Access-Control-Allow-Origin: *');
 header('Content-type: application/json; charset: utf-8');
